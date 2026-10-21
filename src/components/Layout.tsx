@@ -12,6 +12,7 @@ import { ProfileSwitcher } from '../features/dependents/components/ProfileSwitch
 import { Button } from './Button';
 import { Logo } from './Logo';
 import { UnreadBadge } from '../features/messaging/components/UnreadBadge';
+import { NotificationBell } from '../features/notifications/components/NotificationBell';
 import { PageHeader } from './PageHeader';
 import styles from './Layout.module.css';
 
@@ -210,6 +211,9 @@ export function Layout() {
         </nav>
 
         <div className={styles.headerActions}>
+          {/* In-app inbox (issue #107): unread badge + dropdown, then the
+              full list at /notifications. Hidden while signed out. */}
+          <NotificationBell />
           <ProfileSwitcher />
           <Button variant="secondary" onClick={logout} loading={logoutMutation.isPending} size="small">
             {logoutMutation.isPending ? 'Logging out…' : 'Log out'}
